@@ -55,3 +55,4 @@ def handle_commands_from_text(text):
 
     if current_directory:
         open_directory_in_vscode(current_directory)
+

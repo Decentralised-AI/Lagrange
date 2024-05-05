@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lagrange</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -13,12 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
 
     <!-- Ensure your custom JavaScript loads after the DOM is fully loaded -->
-    <script src="chat.js" defer></script>
+    <script src="/static/chat.js" defer></script>
 </head>
 
 <body class="bg-black text-gray-300 flex flex-row justify-between gap-0 min-h-screen max-h-screen font-roboto">
     <div id="sidebar" class="bg-[#131314] bg-opacity-60 text-white w-[20vw] flex flex-col justify-start gap-8 items-center px-4 py-12 min-h-screen rounded-r-lg">
-        <h1 class="text-3xl">File Tree</h1>
+        <h1 class="text-3xl">Working directory</h1>
         <ul id="fileTree" class="text-white"></ul>
     </div>
     <div class="flex flex-col lg:flex-row w-[80vw] min-h-screen">

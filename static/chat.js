@@ -27,7 +27,7 @@ function addMessage(message, isSender) {
   );
 
   const avatar = document.createElement("img");
-  avatar.src = isSender ? "sender-avatar.png" : "receiver-avatar.png";
+  avatar.src = isSender ? "/static/sender-avatar.png" : "/static/receiver-avatar.png";
   avatar.classList.add(
     "avatar",
     "rounded-full",
@@ -104,7 +104,7 @@ function sendMessage() {
   );
 
   const avatar = document.createElement("img");
-  avatar.src = "receiver-avatar.png";
+  avatar.src = "/static/receiver-avatar.png";
   avatar.classList.add(
     "avatar",
     "rounded-full",

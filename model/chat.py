@@ -1,13 +1,12 @@
 import google.generativeai as genai
 import os
-from vertex_model import generate
-from sentiment_analysis import sen_analysis
-from hist_save import read_file, append_history_to_file
-from lagrangian import handle_commands_from_text
+from model.sentiment_analysis import sen_analysis
+from model.hist_save import read_file, append_history_to_file
+from model.lagrangian import handle_commands_from_text
 from pathlib import Path
 import hashlib
 import PyPDF2
-genai.configure(api_key="Your-Api-Key")
+genai.configure(api_key="AIzaSyB8Sb_hO1t0cxvXT5x0W_1iniNC93Ur28A")
 # Set up the model
 generation_config = {
   "temperature": 1,
@@ -42,7 +41,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
 
 
 
-if os.path.exists('history.json'):
+if os.path.exists('history.chat'):
   convo = model.start_chat(history= read_file('history.chat'))
 else:
   convo = model.start_chat(history = [])

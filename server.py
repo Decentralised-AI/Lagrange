@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from chat import chat
+from model.chat import chat
 import markdown
 import os
 import json
@@ -42,7 +42,9 @@ def update_file_tree(directory_path="C:\\Lagrange", output_file="C:\\Lagrange\\f
     root_node = create_directory_node(directory_path)
     with open(output_file, "w") as json_file:
         json.dump(root_node, json_file, indent=4)
-
+@app.route('/')
+def page():
+    return render_template('index.html')
 @app.route('/send_string', methods=['GET'])
 def send_string():
     global last_response
@@ -70,6 +72,7 @@ def input_m():
         return "No selected file", 400
     if file:
         filename = file.filename
+        os.mkdir('media')
         file.save(f"./media/{filename}")
         return f"Document {filename} received and saved.", 200
     return "Invalid data", 400
