@@ -6,7 +6,7 @@ from model.lagrangian import handle_commands_from_text
 from pathlib import Path
 import hashlib
 import PyPDF2
-genai.configure(api_key="AIzaSyB8Sb_hO1t0cxvXT5x0W_1iniNC93Ur28A")
+genai.configure(api_key="Your-Api-Key")
 # Set up the model
 generation_config = {
   "temperature": 1,
