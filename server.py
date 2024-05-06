@@ -8,7 +8,11 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS on all routes
 
 last_response = None  # Global variable to hold the last processed response
-
+if os.path.isdir('C://Lagrange') is False:
+    print('Creating Lagrange directory ----------------------------')
+    os.mkdir('C://Lagrange')
+else:
+    print('Directory exists......continuing -----------------------------')
 
 def create_file_node(file_path):
     """
