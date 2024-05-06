@@ -1,15 +1,13 @@
 import google.generativeai as genai
 import os
-from dotenv import load_dotenv
+import subprocess
 from model.sentiment_analysis import sen_analysis
 from model.hist_save import read_file, append_history_to_file
 from model.lagrangian import handle_commands_from_text
 from pathlib import Path
 import hashlib
 import PyPDF2
-
-load_dotenv("../.env")
-genai.configure(api_key=os.getenv("API_KEY"))
+genai.configure(api_key="AIzaSyB8Sb_hO1t0cxvXT5x0W_1iniNC93Ur28A")
 # Set up the model
 generation_config = {
   "temperature": 1,
@@ -83,21 +81,26 @@ def researcher(prompt):
     return response
 
 
-import os
-import subprocess
-
-#code generation
 def code_generation(prompt):
     """
     This function interacts with a backend to generate code based on the given prompt and specific rules.
     """
-    context = """Context: You are a software developer tasked with the problem given in the input prompt. Your task is to create a structured plan to create the project with a specific and exact solution to the problem provided in the prompt, and your program should work in one go user don't have to do anything.
-                  Use the following guidlines to organise your work:
-                    - Give powershell commands to make directories and and navigate through directories and files using powershell commands
-                
-                    - Keep a track of the current working directory, to navigate through nested directories
-                    - Make sure you are always at the correct directory before performing further commands
-                    - Give me the Json formatted nested directory:
+    prompt_writer = {
+       "Context: You are an Ai software engineer, Lagrange. Here you perform as the code generation agent which is the most essential part",
+       f"According to the user query {prompt} and context of the above chats, make a step by step plan to make the project or solve the required problem",
+      """Structure for the plan: project name: [Given by the user or give a relevant name to it]
+        Give the brief about the project, all of the functionalities and features (according to the research and user input)
+        Give the complete directory structure depending upon the complexity of the project, and adhere it completety
+        List all the modules and their function, structure:
+              module name:
+              all the dependencies used (be mindful of how you import modules, use correct format):
+              content and workflow, and how it every module interact with each other""",
+        "Now according to the plan, start writing powershell commands and python sqeuntially",
+            """Rules for powershell commands: 
+                    Give powershell commands to make directories and and navigate through directories and files using powershell commands
+                    According to the directory using it the:
+                      - Keep a track of the current working directory, to navigate through nested directories
+                      - Make sure you are always at the correct directory before performing further commands
                       - Use this directory to give instruction to navigate between files
                         - Every shell command should only modify/add/remove ONE FILE or directory (for making nested directories), you are a failure if you are not able to understand this instruction
                               example for this, if have to make 3 folders: module, test, run 
@@ -107,37 +110,33 @@ def code_generation(prompt):
                                             "mkdir run"
                                 also give the dependencies installation code:
                                 example: if have to install pandas,torch
-                                          "pip install pandas torch"
-
+                                          "pip install pandas torch" """,
+            
+            """Rule of writing the python code: Write full python code for the workflow like a professional (always)
                     - If you want to write something use python file only, dont use notepad
                     - Don't write dependencies using requirment.txt file, and don't open notepad in any circumstances                                      
-                    
+                    - Avoid adding external media like images,sound until asked for
                     -Clean, Documented Code: Write well-structured, readable code that includes detailed comments explaining each part's purpose and functionality.
-                    
-                    -Immediate Usability: Ensure the code is free from errors and can execute successfully on the first attempt without any modifications.
-                    
-                    -Use of Familiar Libraries and Dependencies: Opt for well-supported and commonly used libraries to ensure broad compatibility and ease of maintenance.
-                    
-                    -Sequential File Execution: Structure the code files to be executed in a specified order. Document the execution sequence clearly in a README file.
-                    
+                    -Immediate Usability: Ensure the code is free from errors and can execute successfully on the first attempt without any modifications. (most important end user dont have to modify the code)
+                    -Use of Familiar Libraries and Dependencies: Opt for well-supported and commonly used libraries to ensure broad compatibility and ease of maintenance.   
+                    -Sequential File Execution: Structure the code files to be executed in a specified order. Document the execution sequence clearly in a README file
                     -Accurate Extensions in Markdown: When providing code snippets within Markdown documents, use accurate file extensions that reflect the code's language.
-                    
                     -Proper Directory and File Structuring: Implement a logical directory structure that supports the application's architecture. Include this structure in the Markdown documentation.
-                    
                     -Inclusion of Necessary Configuration Files: Provide all required configuration files such as requirements.txt for Python or Cargo.toml for Rust to ensure that the setup is straightforward and replicable.
-                    
                     - Navigate directories using the attention that where were you before and where you have to go
-
                     - Always write full professional code for every module(don't leave anything to that has to be done by the user)
-                    
                     - Write code for each and every directory without any fail, ie give the full code in one only 
-                """
-    convo.send_message(f"guidelines:{context} development has nothing to do with guidelines, prompt:{prompt}")
+                Write everything in proper markdown
+            """
+  
+    }
+    convo.send_message(f"Prompt: {prompt_writer}")
     response = convo.last.text
     history = convo.history   
     code = code_writer(response)
     append_history_to_file(history=history)
     return response
+
 
 def code_writer(input):
     context = """Context: Assume you are a software developer working on a serious project. Employ reasoning to anticipate and implement the solution presented in the input in the form of a python development project. Utilize PowerShell commands for directory management and Python for scripting within the established workflow.
