@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from model.chat import chat
-import markdown
 import os
 import json
 app = Flask(__name__)
@@ -64,7 +63,7 @@ def input_t():
         data = request.get_json()
         last_response = chat(data['message'],data['fileList'])
         print(last_response)
-        return markdown.markdown(last_response), 200
+        return last_response, 200
     return "Invalid data", 400
 
 @app.route('/input_m', methods=['POST'])

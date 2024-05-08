@@ -1,0 +1,150 @@
+.hljs {
+  display: block !important;
+  background-color: #2b2b2baa !important; /* Dark grey background */
+  color: #f8f8f2 !important; /* Light text color */
+  padding: 1em !important;
+  margin: 8px 0 !important;
+  overflow-x: auto !important;
+  border-radius: 0.5em !important;
+}
+
+/* Define styles for specific languages */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #ff79c6 !important; /* Pink */
+}
+
+.hljs-string,
+.hljs-meta,
+.hljs-formula {
+  color: #f1fa8c !important; /* Yellow */
+}
+
+.hljs-title,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #bd93f9 !important; /* Purple */
+}
+
+.hljs-subst,
+.hljs-symbol,
+.hljs-attribute,
+.hljs-code,
+.hljs-selector-pseudo {
+  color: #50fa7b !important; /* Green */
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-doctype,
+.hljs-built_in,
+.hljs-params,
+.hljs-deletion {
+  color: #6272a4 !important; /* Blue */
+}
+
+.hljs-function,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #ff79c6 !important; /* Pink */
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-regexp,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #f1fa8c !important; /* Yellow */
+}
+
+.hljs-title,
+.hljs-section {
+  color: #bd93f9 !important; /* Purple */
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-name,
+.hljs-variable {
+  color: #50fa7b !important; /* Green */
+}
+
+.hljs-attr {
+  color: #f1fa8c !important; /* Yellow */
+}
+
+.hljs-number,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-link {
+  color: #bd93f9 !important; /* Purple */
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #f8f8f2 !important;
+  font-style: italic !important;
+}
+
+.hljs-bullet,
+.hljs-subst,
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #8be9fd !important; /* Cyan */
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-meta-string {
+  color: #f1fa8c !important; /* Yellow */
+}
+
+.hljs-attribute,
+.hljs-params,
+.hljs-class .hljs-title {
+  color: #50fa7b !important; /* Green */
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-doctag,
+.hljs-formula {
+  font-weight: bold !important;
+}
+
+/* Styles for line numbers */
+.hljs-ln-numbers {
+  color: #6272a4 !important; /* Blue */
+}
+
+/* Style the line numbers background */
+.hljs-ln {
+  border-right: 1px solid #6272a4 !important; /* Blue */
+}
+
+/* Style the line numbers gutter background */
+.hljs-ln-gutter {
+  background-color: #373a41 !important; /* Dark grey */
+}

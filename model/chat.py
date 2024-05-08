@@ -1,13 +1,16 @@
 import google.generativeai as genai
 import os
-import subprocess
+from dotenv import load_dotenv
 from model.sentiment_analysis import sen_analysis
 from model.hist_save import read_file, append_history_to_file
 from model.lagrangian import handle_commands_from_text
 from pathlib import Path
 import hashlib
 import PyPDF2
-genai.configure(api_key="AIzaSyB8Sb_hO1t0cxvXT5x0W_1iniNC93Ur28A")
+
+load_dotenv("../.env")
+genai.configure(api_key=os.getenv("API_KEY"))
+
 # Set up the model
 generation_config = {
   "temperature": 1,

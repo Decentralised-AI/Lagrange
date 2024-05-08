@@ -1,4 +1,3 @@
-var converter = new showdown.Converter();
 const chatContainer = document.getElementById("chat-container");
 var fileList = []
 
@@ -50,10 +49,12 @@ function addMessage(message, isSender) {
     "w-auto",
     "max-w-[90%]"
   );
-  messageBubble.innerHTML = message;
+  messageBubble.innerHTML = marked.marked(message);
   messageElement.appendChild(messageBubble);
 
   chatContainer.appendChild(messageElement);
+
+  hljs.highlightAll();
 
   scrollToBottom();
 }
